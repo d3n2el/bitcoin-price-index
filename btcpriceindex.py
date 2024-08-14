@@ -2,6 +2,7 @@
 #ask with sys.argv the user for the price of n btc
 #transform n to float
 #make request at bitcoin price index which returns a json
+#print number given by user multiplied by x
 import json
 import sys
 import requests
@@ -10,17 +11,12 @@ def main():
         price= rate.json()
         x = price["bpi"]["USD"]["rate"]
         x= x.replace(",", "")
-        float(x)
-        print(x)
+        x= float(x)
         try:
             if len(sys.argv)== 2:
                 n= sys.argv[1]
-                float(n)
-                print(n)
-                
-
-
-
-
+                n =float(n)
+                amount= n * x
+                print(f"${amount:,.4f}")
         except requests.RequestException:
             pass
