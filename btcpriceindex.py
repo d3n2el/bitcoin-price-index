@@ -6,13 +6,21 @@ import json
 import sys
 import requests
 def main():
+        rate = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
+        price= rate.json()
+        x = price["bpi"]["USD"]["rate"]
+        x= x.replace(",", "")
+        float(x)
+        print(x)
         try:
-            rate = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
-            price= rate.json()
-            for usd in price["bpi"]["USD"]["rate"]:
-                print(usd["rate_float"])
+            if len(sys.argv)== 2:
+                n= sys.argv[1]
+                float(n)
+                print(n)
+                
+
+
+
+
         except requests.RequestException:
             pass
-
-
-main()
