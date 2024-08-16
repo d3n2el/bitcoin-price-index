@@ -1,0 +1,2 @@
+To properly run this file you need to have installed "requests", "json" and "sys". sysand json should be already included while for requests you can do: $ python -m pip install requests
+=
